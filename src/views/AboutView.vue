@@ -1,0 +1,29 @@
+<template>
+    <div class="about-cont">
+        <h4>Reporting your findings</h4>
+        <p>On the home screen, you are able to input the type of
+            astrological sighting you have seen, as well as a text field
+            to write any extra details such as date, time, instrument, magnification etc.
+            The application immediately shows underneath any inputted text.
+        </p>
+        <h4>Observing your log</h4>
+        <p>This page shows a log of the past years sightings. If you wish to remove any sighting
+             from the page, just click the sighting and it will be removed.
+        </p>
+    </div>
+</template>
+
+<script lang="ts">
+
+</script>
+
+<style scoped lang="scss">
+.about-cont {
+    max-width: 500px;
+    margin-top: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px 20px;
+}
+
+</style>

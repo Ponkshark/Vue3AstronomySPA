@@ -10,6 +10,9 @@
   <span class="navlinks">
   <router-link to ="/log">Log</router-link>
   </span>
+  <span class="navlinks">
+  <router-link to ="/about">About</router-link>
+  </span>
 </template>
 
 <script>
