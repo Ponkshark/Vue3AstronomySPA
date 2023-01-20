@@ -7,8 +7,8 @@
             The application immediately shows underneath any inputted text.
         </p>
         <h4>Observing your log</h4>
-        <p>This page shows a log of the past years sightings. If you wish to remove any sighting
-             from the page, just click the sighting and it will be removed.
+        <p>This page shows a log of all reported past asteroid sightings of Pallas, Ornamenta, Deborah, and Seeligeria.
+            These recordings are fetched from the Asterank API.
         </p>
     </div>
 </template>

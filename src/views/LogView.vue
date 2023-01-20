@@ -5,28 +5,66 @@
     <!-- <div v-for="data in logData" :key="data" class="logdata">
         <span @click="deleteLog(data)">{{ data }}</span>
     </div> -->
-    <p>{{ logData }}</p>
+    <div id="data-cont">
+    <p>Name: {{ logData.name }}, Diameter: {{ logData.diameter }}, Reference: {{ logData.id }}<br> First Observation: {{ logData.first_obs }}, Last Observation: {{ logData.last_obs }}, Total Observations: {{ logData.n_obs_used }}</p><br><br>
+    <p>Name: {{ logData2.name }}, Diameter: {{ logData2.diameter }}, Reference: {{ logData2.id }}<br> First Observation: {{ logData2.first_obs }}, Last Observation: {{ logData2.last_obs }}, Total Observations: {{ logData2.n_obs_used }}</p><br><br>
+    <p>Name: {{ logData3.name }}, Diameter: {{ logData3.diameter }}, Reference: {{ logData3.id }}<br> First Observation: {{ logData3.first_obs }}, Last Observation: {{ logData3.last_obs }}, Total Observations: {{ logData3.n_obs_used }}</p><br><br>
+    <p>Name: {{ logData4.name }}, Diameter: {{ logData4.diameter }}, Reference: {{ logData4.id }}<br> First Observation: {{ logData4.first_obs }}, Last Observation: {{ logData4.last_obs }}, Total Observations: {{ logData4.n_obs_used }}</p><br><br>
+    </div>
 </template>
 
-<script lang="ts">
+<script>
 import { defineComponent } from 'vue'
-import axios from 'axios'
-import VueAxios from 'vue-axios'
 
 export default defineComponent({
   data () {
     return {
-      logData: []
+      logData: [],
+      logData2: [],
+      logData3: [],
+      logData4: []
     }
-    // test 1, using inputted data
-    // return {
-    //   logData: ['Object name: STF156, Identifier: WDS01485+6027, Object type: Double star, Constellation: Cassiopeia, R.A/Dec. -J2000.0: 01:48:29 +60°26`32", Telescope - eyepiece: 14" LX850 SCT - LX850 - 16mm Nagler T5, Mag./FoV: 178x/28`', 'Object name: NGC663 - "Letter S Cluster", Identifier: NGC663, Object type: Open cluster, Constellation: Cassiopeia, R.A/Dec. -J2000.0: 01:46:09 +61°14`06", Telescope - eyepiece: 14" LX850 SCT - LX850 - 16mm Nagler T5, Mag./FoV: 178x/28`', 'Object name: 33 Pegasi, Identifier: WDS22237+2051, Object type: Double star, Constellation: Pegasus, R.A/Dec. -J2000.0: 22:23:40 +20°50`54", Telescope - eyepiece: 14" LX850 SCT - LX850 - 16mm Nagler T5, Mag./FoV: 178x/28`']
-    // }
   },
   mounted () {
     fetch('http://www.asterank.com/api/asterank?query= { "name" : "Pallas" } &limit=1')
       .then(res => res.json())
-      .then(data => this.logData === data)
+      .then(data => {
+        const set = new Set(data)
+        for (const item of set) {
+          console.log(item)
+          this.logData = item
+        }
+      })
+      .catch(err => console.log(err.message))
+    fetch('http://www.asterank.com/api/asterank?query= { "name" : "Ornamenta" } &limit=1')
+      .then(res => res.json())
+      .then(data => {
+        const set = new Set(data)
+        for (const item of set) {
+          console.log(item)
+          this.logData2 = item
+        }
+      })
+      .catch(err => console.log(err.message))
+    fetch('http://www.asterank.com/api/asterank?query= { "name" : "Deborah" } &limit=1')
+      .then(res => res.json())
+      .then(data => {
+        const set = new Set(data)
+        for (const item of set) {
+          console.log(item)
+          this.logData3 = item
+        }
+      })
+      .catch(err => console.log(err.message))
+    fetch('http://www.asterank.com/api/asterank?query= { "name" : "Seeligeria" } &limit=1')
+      .then(res => res.json())
+      .then(data => {
+        const set = new Set(data)
+        for (const item of set) {
+          console.log(item)
+          this.logData4 = item
+        }
+      })
       .catch(err => console.log(err.message))
   },
   methods: {
