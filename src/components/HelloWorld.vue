@@ -7,7 +7,7 @@
         Report Finding
       </div>
       <div class="card-body">
-        <form @submit="handleSubmit">
+        <form>
           <div class="row">
             <div class="cell">
               <label>Type:</label>
@@ -26,15 +26,17 @@
             </div>
           </div>
           <div class="row">
-            <div class="cell">
+            <div class="cell" style="margin-bottom: 10px;">
               <label>Additional Notes:</label>
             </div>
             <div class="cell">
-              <textarea v-model="notes" type="textarea" style="padding: 5px; width: 200px; height: 100px; margin: 10px;"></textarea>
+              <div>
+                  <input v-model="notes">
+              </div>
             </div>
           </div>
           <div class="card-footer">
-            <button type="submit" class="btn">Submit</button>
+            <button type="button" class="btn" @click="handleSubmit" style="margin-top: 20px;">Submit</button>
           </div>
         </form>
       </div>
@@ -42,7 +44,20 @@
     <br>
     <div class="underReport"><p>Sighting: {{ sighting }}</p></div>
     <br>
-    <div class="underReport"><p>Notes:<br> {{ notes}}</p></div>
+    <div class="underReport"><p>Notes:<br> {{ notes }}</p></div>
+    <br>
+    <div class="underReport">
+      <strong>Findings Table</strong><br><br>
+      <div style="border: 1px solid red">
+        <li><br>
+          Sighting &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Notes
+        </li><br><br>
+        <li
+        v-for="item in list" :key="item.sighting">
+        {{ item.sighting }} - {{ item.notes }} <br><br>
+        </li>
+      </div>
+    </div>
   </body>
 </template>
 
@@ -58,13 +73,20 @@ export default defineComponent({
     return {
       notes: '',
       sighting: '',
-      messageArray: []
+      messageArray: [],
+      list: [{ sighting: 'Example', notes: 'Example' }]
     }
   },
   methods: {
     handleSubmit () {
       console.log('form submitted')
+      this.list.push({ sighting: this.sighting, notes: this.notes })
+      console.log(this.sighting)
+      console.log(this.notes)
     }
+  },
+  beforeMount () {
+    this.list.shift()
   }
 })
 

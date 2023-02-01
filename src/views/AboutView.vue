@@ -8,7 +8,9 @@
         </p>
         <h4>Observing your log</h4>
         <p>This page shows a log of all reported past asteroid sightings of Pallas, Ornamenta, Deborah, and Seeligeria.
-            These recordings are fetched from the Asterank API.
+            These recordings are fetched from the Asterank API. You can also input names of known asteroids into the
+            diameter checker below, and the application will fetch and show you the diameter of that asteroid from the
+            asterank API.
         </p>
     </div>
 </template>
